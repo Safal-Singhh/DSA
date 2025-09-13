@@ -1,33 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int pri(char ch){
-    if(ch == '+' || ch == '-') return 1;
-    else return 2;
-}
-
-int sol(int val1, int val2, int ch){
-    if(ch == '+') return val1+val2;
-    else if(ch == '-') return val1-val2;
-    else if(ch == '*') return val1*val2;
-    else return val1/val2;
+string sol(string val1, string val2, char ch){
+    string s = "";
+    s += val1;
+    s.push_back(ch);
+    s += val2;
+    return s;
 }
 
 int main(){
     string s = "79+4*8/3-";
-    stack<int> val;
+    stack<string> val;
     for(int i = 0; i < s.length(); i++){
         // check if s[i] is a digit
         if(s[i] >= 48 && s[i] <= 57){
-            val.push(s[i]-48);
+            val.push(to_string(s[i]-48));
         }
         else{
             char ch = s[i];
-            int val2 = val.top();
+            string val2 = val.top();
             val.pop();
-            int val1 = val.top();
+            string val1 = val.top();
             val.pop();
-            int ans = sol(val1,val2,ch);
+            string ans = sol(val1,val2,ch);
             val.push(ans);
         }    
     }
