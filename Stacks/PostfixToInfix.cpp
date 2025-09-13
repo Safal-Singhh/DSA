@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int pri(char ch){
+    if(ch == '+' || ch == '-') return 1;
+    else return 2;
+}
+
 int sol(int val1, int val2, int ch){
     if(ch == '+') return val1+val2;
     else if(ch == '-') return val1-val2;
